@@ -34,7 +34,7 @@ public class SavePoint : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Dash") && PlayerStates.playerStates.saving)
+        if (Input.GetButtonDown("Cancel") && PlayerStates.playerStates.saving)
         {
             ReturnToGame();
         }
@@ -61,10 +61,16 @@ public class SavePoint : MonoBehaviour
 
     void ReturnToGame()
     {
+        StartCoroutine(GameTime());
+    }
+
+    IEnumerator GameTime() 
+    {        
         Time.timeScale = 1;
         savePanel.SetActive(false);
         system.SetSelectedGameObject(null);
-        PlayerStates.playerStates.saving = false;
         Spawner.spawn.EnemySpawn();
+        yield return new WaitForSeconds(2);
+        PlayerStates.playerStates.saving = false;
     }
 }

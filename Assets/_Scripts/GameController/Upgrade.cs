@@ -31,11 +31,6 @@ public class Upgrade : MonoBehaviour
         if (Input.GetButtonDown("Submit") && isClose)
         {
             Destroy(gameObject);
-            /*
-            PlayerHealth.health.healthlvl++;
-            Stamina.stam.staminalvl++;
-            Melee1.melee1.damagelvl++;
-            */
             PlayerStates.playerStates.LevelUp();
         }
 	}

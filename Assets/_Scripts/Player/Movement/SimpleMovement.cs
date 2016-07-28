@@ -35,7 +35,17 @@ public class SimpleMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetButtonDown("Dash") && Stamina.stam.curStamina >=10)
+        if (Input.GetButton("Dash")&&Stamina.stam.curStamina>5)
+        {
+            Stamina.stam.curStamina--;
+            speed = 20;
+        }
+        else
+        {
+            speed = 10;
+        }
+
+        if (Input.GetButtonDown("Submit") && Stamina.stam.curStamina >=10)
         {
             Vector3 velocity = movement.normalized * dash;
             rigidBody.MovePosition(rigidBody.position + velocity);
