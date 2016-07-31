@@ -575,9 +575,10 @@ GameObject:
   - 223: {fileID: 22313118}
   - 114: {fileID: 11436794}
   - 114: {fileID: 11409518}
+  - 114: {fileID: 11495960}
   m_Layer: 5
   m_Name: EnemyCanvas
-  m_TagString: Untagged
+  m_TagString: EnemyCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1179,7 +1180,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.984803, y: 1.02586576e-16, z: -80.16159}
+  m_LocalPosition: {x: -216.2338, y: 184.54344, z: -88.04971}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 456042}
@@ -1269,7 +1270,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194724}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 120
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -1471,6 +1472,18 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   isDead: 0
+  cbt: {fileID: 139886, guid: e61b6759bed744d80ba2c75d5a840340, type: 2}
+--- !u!114 &11495960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4321e9849c1463e94c4860761aab87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   cbt: {fileID: 139886, guid: e61b6759bed744d80ba2c75d5a840340, type: 2}
 --- !u!135 &13579776
 SphereCollider:
@@ -1773,7 +1786,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: cbt
       value: 
-      objectReference: {fileID: 197124, guid: e61b6759bed744d80ba2c75d5a840340, type: 2}
+      objectReference: {fileID: 139886, guid: e61b6759bed744d80ba2c75d5a840340, type: 2}
     - target: {fileID: 0}
       propertyPath: m_Name
       value: CBT
@@ -1781,6 +1794,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

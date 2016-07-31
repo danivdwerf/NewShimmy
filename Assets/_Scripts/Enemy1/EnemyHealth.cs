@@ -31,7 +31,7 @@ public class EnemyHealth : MonoBehaviour
 		}
 	}
 
-	private void ApplyDamage(int damage)
+    public void ApplyDamage(float damage)
 	{
 		health -= damage;
         Initcbt(damage.ToString());
@@ -45,16 +45,15 @@ public class EnemyHealth : MonoBehaviour
         Destroy(gameObject,5f);
 	}
 
-    private void Initcbt(string damage)
+    public void Initcbt(string damage)
     {
         GameObject temp = (GameObject)Instantiate(cbt);
         RectTransform tempRect = temp.GetComponent<RectTransform>();
-        temp.transform.parent = GameObject.Find("EnemyCanvas").transform;
+        temp.transform.parent = transform.GetComponentInChildren<Canvas>().transform;
         tempRect.transform.localPosition = cbt.transform.localPosition;
         tempRect.transform.localScale = cbt.transform.localScale;
         tempRect.transform.localRotation = cbt.transform.localRotation;
         temp.GetComponent<Text>().text = damage;
-
         Destroy(temp.gameObject, 1f);
     }
 }
