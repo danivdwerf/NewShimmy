@@ -17,7 +17,7 @@ public class Flask : MonoBehaviour
         flask = this;
         maxFlask=5;
         flaskLeft = maxFlask;
-        flaskHealing = 25+(PlayerStates.playerStates.level*3);
+        flaskHealing = 20+(PlayerStates.playerStates.level*3);
     }
 
     void Update()

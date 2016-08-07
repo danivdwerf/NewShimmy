@@ -37,7 +37,7 @@ public class EnemyHealth : MonoBehaviour
         if (!isDead)
         {
             health -= damage;
-            Initcbt(damage);
+            Addcbt(damage);
         }
 	}
 
@@ -49,19 +49,24 @@ public class EnemyHealth : MonoBehaviour
         Destroy(gameObject,5f);
 	}
 
-    public void Initcbt(float damage)
+    public void Addcbt(float damage)
     {
         if (temp == null)
         {
             temp = (GameObject)Instantiate(cbt);
             RectTransform tempRect = temp.GetComponent<RectTransform>();
-            //temp.transform.parent = transform.GetComponentInChildren<Canvas>().transform;
             temp.transform.SetParent(transform.GetComponentInChildren<Canvas>().transform);
             tempRect.transform.localPosition = cbt.transform.localPosition;
             tempRect.transform.localScale = cbt.transform.localScale;
-            tempRect.transform.localRotation = cbt.transform.localRotation;
-            temp.GetComponent<Text>().text = damage.ToString();
-            Destroy(temp.gameObject, 1f);
+            tempRect.transform.localRotation = cbt.transform.localRotation; 
+            temp.GetComponent<Text>().text = damage.ToString(); 
+            Destroy(temp.gameObject, 2.5f);
+        }
+        else
+        {
+            float oldDam = float.Parse(temp.GetComponent<Text>().text);
+            float newDam = oldDam += damage;
+            temp.GetComponent<Text>().text = newDam.ToString();
         }
     }
 }

@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Target
   - EnemyCanvas
+  - StairUp
+  - StairDown
   layers:
   - Default
   - TransparentFX

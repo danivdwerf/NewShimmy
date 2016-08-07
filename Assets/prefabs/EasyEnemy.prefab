@@ -575,7 +575,6 @@ GameObject:
   - 223: {fileID: 22313118}
   - 114: {fileID: 11436794}
   - 114: {fileID: 11409518}
-  - 114: {fileID: 11495960}
   m_Layer: 5
   m_Name: EnemyCanvas
   m_TagString: EnemyCanvas
@@ -1406,7 +1405,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf3c15ad72ce472aa37054280ad9365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 22313118}
   bar: {fileID: 11417472}
 --- !u!114 &11444952
 MonoBehaviour:
@@ -1472,18 +1470,6 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   isDead: 0
-  cbt: {fileID: 139886, guid: e61b6759bed744d80ba2c75d5a840340, type: 2}
---- !u!114 &11495960
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4321e9849c1463e94c4860761aab87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   cbt: {fileID: 139886, guid: e61b6759bed744d80ba2c75d5a840340, type: 2}
 --- !u!135 &13579776
 SphereCollider:
