@@ -5,7 +5,6 @@ public class EnemyAI : MonoBehaviour
 {
     private GameObject player;
     private NavMeshAgent nav;
-    private EnemySight sight;
     [SerializeField] private Animator anim;
 
     void Start()
@@ -13,7 +12,6 @@ public class EnemyAI : MonoBehaviour
         anim.SetBool("attack", false);
         anim.SetBool("walk", false);
         anim.SetBool("idle", true);
-        sight = GetComponent<EnemySight>();
         nav = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
     }

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class SavePoint : MonoBehaviour 
 {
     [SerializeField] private GameObject savePanel;
-    private bool inSaveArea;
+    public bool inSaveArea;
     private EventSystem system;  
 
     void Start()
@@ -47,6 +47,7 @@ public class SavePoint : MonoBehaviour
     
     void SavingPoint()
     {
+        Spawner.spawn.DeleterEnemies();
         savePanel.SetActive(true);
         PlayerStates.playerStates.saving = true;
         Time.timeScale = 0;
@@ -55,22 +56,14 @@ public class SavePoint : MonoBehaviour
         Flask.flask.flaskLeft = Flask.flask.maxFlask;
         Stamina.stam.curStamina = Stamina.stam.maxStamina;
         PlayerHealth.health.curHealth = PlayerHealth.health.maxHealth;
-
-        Spawner.spawn.DeleterEnemies();
     }
 
     void ReturnToGame()
     {
-        StartCoroutine(GameTime());
-    }
-
-    IEnumerator GameTime() 
-    {        
         Time.timeScale = 1;
         savePanel.SetActive(false);
         system.SetSelectedGameObject(null);
-        Spawner.spawn.EnemySpawn();
-        yield return new WaitForSeconds(2);
         PlayerStates.playerStates.saving = false;
+        Spawner.spawn.EnemySpawn();
     }
 }

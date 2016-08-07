@@ -23,17 +23,18 @@ public class Spawner : MonoBehaviour
 
     public static Spawner spawn;
 
-	void Start ()
+    void Awake ()
     {
         spawn = this;
         EnemySpawn();
-	}
+    }
 
     public void EnemySpawn()
     {
         for (int i = 0; i < enemies.Count; i++)
         {
             enemies[i].enemy= (GameObject)Instantiate(prefab, locations[i].location.position, Quaternion.identity);
+            Debug.Log("Spawn");
         }
     }
 

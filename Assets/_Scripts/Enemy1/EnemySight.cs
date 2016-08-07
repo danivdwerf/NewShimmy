@@ -7,7 +7,7 @@ public class EnemySight : MonoBehaviour
     private GameObject player;
     private EnemyHealth enemyHP;
     private EnemyAI ai;
-    public bool attack;
+    [HideInInspector] public bool attack;
     [HideInInspector] public static EnemySight sight;
 
     void Start()

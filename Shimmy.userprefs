@@ -1,11 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/Enemy1/EnemyHealth.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/Player/Movement/SimpleMovement.cs">
     <Files>
-      <File FileName="Assets/_Scripts/Enemy1/EnemyUI.cs" Line="16" Column="48" />
-      <File FileName="Assets/_Scripts/Player/Movement/SimpleMovement.cs" Line="37" Column="6" />
-      <File FileName="Assets/_Scripts/Player/Combat/Melee1.cs" Line="14" Column="34" />
-      <File FileName="Assets/_Scripts/Enemy1/EnemyHealth.cs" Line="33" Column="1" />
+      <File FileName="Assets/_Scripts/Player/Movement/SimpleMovement.cs" Line="44" Column="39" />
+      <File FileName="Assets/_Scripts/GameController/Spawner.cs" Line="36" Column="1" />
+      <File FileName="Assets/_Scripts/Save/SavePoint.cs" Line="59" Column="6" />
+      <File FileName="Assets/_Scripts/Enemy1/EnemyUI.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/Enemy1/EnemySight.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/Save/SaveLoad.cs" Line="49" Column="44" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

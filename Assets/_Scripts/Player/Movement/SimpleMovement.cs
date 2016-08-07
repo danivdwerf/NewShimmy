@@ -35,7 +35,11 @@ public class SimpleMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetButton("Dash")&&Stamina.stam.curStamina>5)
+        if (Stamina.stam.curStamina <= 5)
+        {
+            speed = 10;
+        }
+        if (Input.GetButton("Dash")&&Stamina.stam.curStamina>=5)
         {
             Stamina.stam.curStamina--;
             speed = 20;

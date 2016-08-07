@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     [HideInInspector] public float maxHealth;
     [HideInInspector] public bool isDead;
     [SerializeField] private GameObject cbt;
+    private GameObject temp;
     private Animator anim;
 
     public static EnemyHealth enemyHP;
@@ -33,8 +34,11 @@ public class EnemyHealth : MonoBehaviour
 
     public void ApplyDamage(float damage)
 	{
-		health -= damage;
-        Initcbt(damage.ToString());
+        if (!isDead)
+        {
+            health -= damage;
+            Initcbt(damage);
+        }
 	}
 
 	private void KillEnemy()
@@ -45,15 +49,19 @@ public class EnemyHealth : MonoBehaviour
         Destroy(gameObject,5f);
 	}
 
-    public void Initcbt(string damage)
+    public void Initcbt(float damage)
     {
-        GameObject temp = (GameObject)Instantiate(cbt);
-        RectTransform tempRect = temp.GetComponent<RectTransform>();
-        temp.transform.parent = transform.GetComponentInChildren<Canvas>().transform;
-        tempRect.transform.localPosition = cbt.transform.localPosition;
-        tempRect.transform.localScale = cbt.transform.localScale;
-        tempRect.transform.localRotation = cbt.transform.localRotation;
-        temp.GetComponent<Text>().text = damage;
-        Destroy(temp.gameObject, 1f);
+        if (temp == null)
+        {
+            temp = (GameObject)Instantiate(cbt);
+            RectTransform tempRect = temp.GetComponent<RectTransform>();
+            //temp.transform.parent = transform.GetComponentInChildren<Canvas>().transform;
+            temp.transform.SetParent(transform.GetComponentInChildren<Canvas>().transform);
+            tempRect.transform.localPosition = cbt.transform.localPosition;
+            tempRect.transform.localScale = cbt.transform.localScale;
+            tempRect.transform.localRotation = cbt.transform.localRotation;
+            temp.GetComponent<Text>().text = damage.ToString();
+            Destroy(temp.gameObject, 1f);
+        }
     }
 }

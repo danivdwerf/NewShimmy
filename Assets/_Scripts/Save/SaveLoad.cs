@@ -46,6 +46,8 @@ public class SaveLoad : MonoBehaviour
             Vector3 newPosition = saver.savePosition.GetPositionAsVector3();
             GameObject.FindGameObjectWithTag("Player").transform.position = newPosition;
             PlayerStates.playerStates.level = saver.level;
+            Spawner.spawn.DeleterEnemies();
+            Spawner.spawn.EnemySpawn();
         }
     }
 }
