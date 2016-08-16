@@ -59,7 +59,7 @@ NavMeshData:
     tileSize: 25.6
     walkableHeight: 1
     walkableRadius: 0.3
-    walkableClimb: 0.4
+    walkableClimb: 0.6
     cellSize: 0.1
   m_Heightmaps: []
   m_HeightMeshes: []

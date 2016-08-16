@@ -45,9 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\StairHandler.cs" />
      <Compile Include="Assets\_Scripts\Cam\Cam.cs" />
      <Compile Include="Assets\_Scripts\Cam\MouseLook.cs" />
+     <Compile Include="Assets\_Scripts\Enemy1\AnimationEvent.cs" />
      <Compile Include="Assets\_Scripts\Enemy1\EnemyAI.cs" />
      <Compile Include="Assets\_Scripts\Enemy1\EnemyHealth.cs" />
      <Compile Include="Assets\_Scripts\Enemy1\EnemyMelee.cs" />
@@ -65,6 +65,7 @@
      <Compile Include="Assets\_Scripts\Player\Combat\Score.cs" />
      <Compile Include="Assets\_Scripts\Player\Combat\Stamina.cs" />
      <Compile Include="Assets\_Scripts\Player\Movement\SimpleMovement.cs" />
+     <Compile Include="Assets\_Scripts\Player\StairHandler.cs" />
      <Compile Include="Assets\_Scripts\Save\SaveLoad.cs" />
      <Compile Include="Assets\_Scripts\Save\SavePoint.cs" />
      <Compile Include="Assets\_Scripts\UI\Dialog\DialogFromLine.cs" />

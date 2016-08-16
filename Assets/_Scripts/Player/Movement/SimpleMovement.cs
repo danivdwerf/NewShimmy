@@ -11,6 +11,8 @@ public class SimpleMovement : MonoBehaviour
     private float dash = 2.0f;
     [HideInInspector] public Transform playerPos;
     public static SimpleMovement move;
+    private bool exhausted = false;
+
 
     void Awake()
     {
@@ -35,21 +37,32 @@ public class SimpleMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (Stamina.stam.curStamina >= 25)
+        {
+            exhausted = false;
+        }
         if (Stamina.stam.curStamina <= 5)
         {
+            exhausted = true;
             speed = 10;
         }
-        if (Input.GetButton("Dash")&&Stamina.stam.curStamina>=5)
+        if (Input.GetButton("Sprint")&&Stamina.stam.curStamina>=5)
         {
-            Stamina.stam.curStamina--;
-            speed = 20;
+            if (exhausted == false)
+            {
+                if (z > 0)
+                {
+                    Stamina.stam.curStamina--;
+                    speed = 20;
+                }
+            }
         }
         else
         {
             speed = 10;
         }
 
-        if (Input.GetButtonDown("Submit") && Stamina.stam.curStamina >=10)
+        if (Input.GetButtonDown("Dash") && Stamina.stam.curStamina >=10)
         {
             Vector3 velocity = movement.normalized * dash;
             rigidBody.MovePosition(rigidBody.position + velocity);

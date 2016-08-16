@@ -3,11 +3,13 @@ using System.Collections;
 
 public class EnemyMelee : MonoBehaviour 
 {
+    private AnimationEvent animEvent;
     private Animator _animator;
     private int _playerAttackStateHash = Animator.StringToHash("Base Layer.Attack");
 
     void Start()
     {
+        animEvent = GetComponentInParent<AnimationEvent>();
         _animator = GetComponentInParent<Animator>();
     }
 
@@ -15,10 +17,15 @@ public class EnemyMelee : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            //Checks if attack animation is playing
             AnimatorStateInfo info = _animator.GetCurrentAnimatorStateInfo(0);
             if (info.nameHash == _playerAttackStateHash)
             {
-                PlayerHealth.health.Hurt(10);
+                //checks if the animation Event gave through the number I set up
+                if (animEvent.number == 1)
+                {
+                    PlayerHealth.health.Hurt(10);
+                }
             }
         }
     }

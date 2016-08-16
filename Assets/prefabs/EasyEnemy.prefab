@@ -70,6 +70,7 @@ GameObject:
   - 4: {fileID: 456042}
   - 95: {fileID: 9573874}
   - 136: {fileID: 13686612}
+  - 114: {fileID: 11418936}
   m_Layer: 0
   m_Name: Skeleton@Skin
   m_TagString: Untagged
@@ -636,12 +637,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 488876}
   - 135: {fileID: 13579776}
-  - 54: {fileID: 5454038}
   - 195: {fileID: 19530810}
   - 114: {fileID: 11489084}
   - 114: {fileID: 11438308}
   - 114: {fileID: 11405514}
   - 114: {fileID: 11444952}
+  - 54: {fileID: 5416664}
   m_Layer: 0
   m_Name: EasyEnemy
   m_TagString: Enemy
@@ -941,7 +942,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108126}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
@@ -1179,7 +1180,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -216.2338, y: 184.54344, z: -88.04971}
+  m_LocalPosition: {x: 0, y: 0, z: -41.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 456042}
@@ -1262,7 +1263,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 480808}
   m_RootOrder: 0
---- !u!54 &5454038
+--- !u!54 &5416664
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1287,7 +1288,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.26872548, y: 0.19819902, z: 2.256102}
+  m_Size: {x: 0.26872548, y: 0.38, z: 2.256102}
   m_Center: {x: -0.2698732, y: 0.0036709476, z: -0.37864038}
 --- !u!65 &6589842
 BoxCollider:
@@ -1299,7 +1300,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6662278, y: 0.1491409, z: 0.53931546}
+  m_Size: {x: 0.6662278, y: 0.38, z: 0.53931546}
   m_Center: {x: -0.08105953, y: -0.00790735, z: 1.01385}
 --- !u!95 &9573874
 Animator:
@@ -1373,6 +1374,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11418936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed9cb111b5c6d41bb98acfd96f2dcbfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  number: 0
 --- !u!114 &11436794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1490,7 +1503,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108126}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.025
   m_Height: 0.15
@@ -1784,6 +1797,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Mass
       value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

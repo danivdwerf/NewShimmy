@@ -26,7 +26,6 @@ public class Melee1 : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.forward, out hit))
             {
                 distance = hit.distance;
-                Debug.DrawLine(transform.position, hit.transform.position, Color.red);
                 if (distance < maxDistance)
                 {
                     damage = Mathf.Round(Random.Range(45.0f, 60.0f) + (PlayerStates.playerStates.level * 5));

@@ -22,28 +22,27 @@ public class EnemySight : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") && !enemyHP.isDead)
-        {
-            transform.LookAt(transform.position + player.transform.rotation * Vector3.forward, player.transform.rotation * Vector3.up);
+        {   
+            transform.LookAt(player.transform);
             Vector3 direction = other.transform.position - transform.position;
 
             if (Physics.Raycast(transform.position, direction.normalized, out hit))
             {
                 if (hit.collider.gameObject == player)
                 {
-                    if (hit.distance <= 9 && hit.distance > 2.5f)
+                    if (hit.distance > 9)
+                    {
+                        ai.Idle();
+                    }
+                    if (hit.distance <= 9 && hit.distance >4)
                     {
                         ai.Chase();
                         attack = false;
                     }
-                    else if (hit.distance <= 2.5f)
+                    else if (hit.distance <= 4)
                     {
                         ai.Attack();
                         attack = true;
-                    }
-                    else
-                    {
-                        ai.Idle();
-                        attack = false;
                     }
                 }
             }
