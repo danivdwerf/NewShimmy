@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class SavePoint : MonoBehaviour 
 {
     [SerializeField] private GameObject savePanel;
-    public bool inSaveArea;
+    [HideInInspector] public bool inSaveArea;
     private EventSystem system;  
 
     void Start()

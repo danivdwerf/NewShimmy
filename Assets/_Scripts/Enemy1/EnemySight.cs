@@ -34,12 +34,12 @@ public class EnemySight : MonoBehaviour
                     {
                         ai.Idle();
                     }
-                    if (hit.distance <= 9 && hit.distance >4)
+                    if (hit.distance <= 9 && hit.distance >3)
                     {
                         ai.Chase();
                         attack = false;
                     }
-                    else if (hit.distance <= 4)
+                    else if (hit.distance <= 3)
                     {
                         ai.Attack();
                         attack = true;

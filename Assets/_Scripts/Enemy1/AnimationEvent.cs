@@ -9,7 +9,6 @@ public class AnimationEvent : MonoBehaviour
         number = 0;
     }
 
-
     public void SwitchAttack(int checkcol)
     {
         number = checkcol;

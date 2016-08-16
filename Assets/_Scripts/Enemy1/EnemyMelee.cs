@@ -24,7 +24,7 @@ public class EnemyMelee : MonoBehaviour
                 //checks if the animation Event gave through the number I set up
                 if (animEvent.number == 1)
                 {
-                    PlayerHealth.health.Hurt(10);
+                    PlayerHealth.health.Hurt(30);
                 }
             }
         }
