@@ -4,10 +4,12 @@ using System.Collections;
 public class Upgrade : MonoBehaviour 
 {
     private bool isClose;
+    [SerializeField] private GameObject visual;  
 
 	void Start () 
     {
         isClose = false;
+        visual.SetActive(false);
 	}
 
     void OnTriggerEnter(Collider other)
@@ -30,8 +32,16 @@ public class Upgrade : MonoBehaviour
     {
         if (Input.GetButtonDown("Submit") && isClose)
         {
-            Destroy(gameObject);
             PlayerStates.playerStates.LevelUp();
+            visual.SetActive(true);
+            Destroy(gameObject);
+            StartCoroutine(DeleteVisual());
         }
 	}
+
+    IEnumerator DeleteVisual()
+    {
+        yield return new WaitForSeconds(2f);
+        visual.SetActive(false);
+    }
 }

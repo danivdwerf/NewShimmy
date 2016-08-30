@@ -33,7 +33,7 @@ public class Spawner : MonoBehaviour
     {
         for (int i = 0; i < enemies.Count; i++)
         {
-            enemies[i].enemy= (GameObject)Instantiate(prefab, locations[i].location.position, Quaternion.identity);
+            enemies[i].enemy= (GameObject)Instantiate(prefab, locations[i].location.transform.position, Quaternion.identity);
         }
     }
 

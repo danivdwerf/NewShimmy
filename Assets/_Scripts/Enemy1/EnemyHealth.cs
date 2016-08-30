@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private GameObject cbt;
     private GameObject temp;
     private Animator anim;
+    private AnimationEvent animEvent;
 
     public static EnemyHealth enemyHP;
 
@@ -17,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
 	{
         enemyHP = this;
         anim = GetComponentInChildren<Animator>();
+        animEvent = GetComponentInChildren<AnimationEvent>();
 
         maxHealth = 100;
         health = maxHealth;
@@ -30,6 +32,11 @@ public class EnemyHealth : MonoBehaviour
             health = 0.1f;
 			KillEnemy ();
 		}
+
+        if (animEvent.hurt == 1)
+        {
+            anim.SetBool("hurt",false);
+        }
 	}
 
     public void ApplyDamage(float damage)
@@ -38,6 +45,10 @@ public class EnemyHealth : MonoBehaviour
         {
             health -= damage;
             Addcbt(damage);
+            if (health > 0)
+            {
+                anim.SetBool("hurt", true);
+            }
         }
 	}
 
@@ -46,7 +57,7 @@ public class EnemyHealth : MonoBehaviour
         isDead = true;
         Score.score.nPointsUp(20f);
         anim.SetBool("dead", true);
-        Destroy(gameObject,5f);
+        Destroy(gameObject, 5f);
 	}
 
     public void Addcbt(float damage)

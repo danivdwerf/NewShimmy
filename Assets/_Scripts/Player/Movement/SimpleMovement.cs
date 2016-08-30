@@ -12,17 +12,19 @@ public class SimpleMovement : MonoBehaviour
     [HideInInspector] public Transform playerPos;
     public static SimpleMovement move;
     private bool exhausted = false;
+    private HandleInput input;
 
 
     void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
+        input = GameObject.FindObjectOfType<HandleInput>();
         move = this;
     }
 
     void Update()
     {
-        if (Input.GetJoystickNames().Length > 0)
+        if (input.controller=="xbox")
         {
             x = Input.GetAxisRaw("LeftStickX");
             z = Input.GetAxisRaw("LeftStickY");
@@ -37,7 +39,7 @@ public class SimpleMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Stamina.stam.curStamina >= 25)
+        if (Stamina.stam.curStamina >= Stamina.stam.maxStamina*0.7f)
         {
             exhausted = false;
         }

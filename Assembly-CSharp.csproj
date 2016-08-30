@@ -53,7 +53,7 @@
      <Compile Include="Assets\_Scripts\Enemy1\EnemyMelee.cs" />
      <Compile Include="Assets\_Scripts\Enemy1\EnemySight.cs" />
      <Compile Include="Assets\_Scripts\Enemy1\EnemyUI.cs" />
-     <Compile Include="Assets\_Scripts\GameController\LastPlayerSighting.cs" />
+     <Compile Include="Assets\_Scripts\Enemy1\Patrolling.cs" />
      <Compile Include="Assets\_Scripts\GameController\PlayerStates.cs" />
      <Compile Include="Assets\_Scripts\GameController\Spawner.cs" />
      <Compile Include="Assets\_Scripts\GameController\Upgrade.cs" />
@@ -64,6 +64,7 @@
      <Compile Include="Assets\_Scripts\Player\Combat\PlayerHealth.cs" />
      <Compile Include="Assets\_Scripts\Player\Combat\Score.cs" />
      <Compile Include="Assets\_Scripts\Player\Combat\Stamina.cs" />
+     <Compile Include="Assets\_Scripts\Player\Movement\HandleInput.cs" />
      <Compile Include="Assets\_Scripts\Player\Movement\SimpleMovement.cs" />
      <Compile Include="Assets\_Scripts\Player\StairHandler.cs" />
      <Compile Include="Assets\_Scripts\Save\SaveLoad.cs" />
