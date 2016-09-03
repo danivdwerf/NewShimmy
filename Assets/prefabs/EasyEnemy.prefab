@@ -660,6 +660,7 @@ GameObject:
   - 114: {fileID: 11405514}
   - 114: {fileID: 11444952}
   - 54: {fileID: 5430570}
+  - 82: {fileID: 8218074}
   m_Layer: 0
   m_Name: EasyEnemy
   m_TagString: Enemy
@@ -1319,6 +1320,80 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7938387, y: 0.38, z: 0.703317}
   m_Center: {x: -0.01726489, y: -0.007907513, z: 1.0958325}
+--- !u!82 &8218074
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194724}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &9573874
 Animator:
   serializedVersion: 3
@@ -1534,6 +1609,9 @@ MonoBehaviour:
   maxHealth: 0
   isDead: 0
   cbt: {fileID: 139886, guid: e61b6759bed744d80ba2c75d5a840340, type: 2}
+  hurt: {fileID: 8300000, guid: 4f06c0ab587c2438ca37ddf159b995c9, type: 3}
+  death: {fileID: 8300000, guid: b40c997ba7e8e4204b5ffbbd5dd9585e, type: 3}
+  backstab: {fileID: 8300000, guid: df60d99f5837449c19a4d699684b4fda, type: 3}
 --- !u!135 &13579776
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1875,6 +1953,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Volume
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

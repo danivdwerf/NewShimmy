@@ -8,6 +8,12 @@ public class EnemyHealth : MonoBehaviour
     [HideInInspector] public float maxHealth;
     [HideInInspector] public bool isDead;
     [SerializeField] private GameObject cbt;
+    private Transform target;
+
+    private AudioSource source;
+    [SerializeField] private AudioClip hurt;
+    [SerializeField] private AudioClip death;
+    [SerializeField] private AudioClip backstab;
     private GameObject temp;
     private Animator anim;
     private AnimationEvent animEvent;
@@ -19,6 +25,8 @@ public class EnemyHealth : MonoBehaviour
         enemyHP = this;
         anim = GetComponentInChildren<Animator>();
         animEvent = GetComponentInChildren<AnimationEvent>();
+        source = GetComponent<AudioSource>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;    
 
         maxHealth = 100;
         health = maxHealth;
@@ -41,9 +49,25 @@ public class EnemyHealth : MonoBehaviour
 
     public void ApplyDamage(float damage)
 	{
+        Vector3 toTarget = (target.position - transform.position).normalized;
         if (!isDead)
         {
-            health -= damage;
+            if (Vector3.Dot(toTarget, transform.forward) > 0) 
+            {
+                if(damage < health)
+                {
+                    source.PlayOneShot(death);
+                }
+                health -= damage;
+            } 
+            else 
+            {
+                if(damage < health)
+                {
+                    source.PlayOneShot(backstab);
+                }
+                health -= (damage * 1.2f);
+            }
             Addcbt(damage);
             if (health > 0)
             {
@@ -55,7 +79,8 @@ public class EnemyHealth : MonoBehaviour
 	private void KillEnemy()
 	{
         isDead = true;
-        Score.score.nPointsUp(20f);
+        source.PlayOneShot(hurt);
+        Score.score.nPointsUp(20f*PlayerStates.playerStates.level);
         anim.SetBool("dead", true);
         Destroy(gameObject, 5f);
 	}
