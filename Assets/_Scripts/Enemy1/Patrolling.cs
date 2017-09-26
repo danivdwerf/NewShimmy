@@ -5,11 +5,11 @@ public class Patrolling : MonoBehaviour
 {
     [SerializeField] private Transform[] points;
     private int destPoint = 0;
-    private NavMeshAgent agent;
+    private UnityEngine.AI.NavMeshAgent agent;
 
     void Start () 
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.autoBraking = false;
         GotoNextPoint();
     }

@@ -1,7 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{4CC8EB1B-9E40-0F47-BA44-901992E04F58}") = "Shimmy", "Assembly-CSharp.csproj", "{3983393F-9D04-287F-7F61-721C7C846266}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shimmy", "Assembly-CSharp.csproj", "{3983393F-9D04-287F-7F61-721C7C846266}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

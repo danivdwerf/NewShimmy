@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyAI : MonoBehaviour 
 {
     private GameObject player;
-    private NavMeshAgent nav;
+    private UnityEngine.AI.NavMeshAgent nav;
     [SerializeField] private Animator anim;
 
     void Start()
@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour
         anim.SetBool("attack", false);
         anim.SetBool("walk", false);
         anim.SetBool("idle", true);
-        nav = GetComponent<NavMeshAgent>();
+        nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
