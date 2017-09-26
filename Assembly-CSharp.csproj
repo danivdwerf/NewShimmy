@@ -51,7 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_Scripts\Cam\Cam.cs" />
+     <Compile Include="Assets\_Scripts\Cam\FollowObject.cs" />
      <Compile Include="Assets\_Scripts\Cam\MouseLook.cs" />
      <Compile Include="Assets\_Scripts\Enemy1\AnimationEvent.cs" />
      <Compile Include="Assets\_Scripts\Enemy1\EnemyAI.cs" />
