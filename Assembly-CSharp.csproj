@@ -71,7 +71,7 @@
      <Compile Include="Assets\_Scripts\Player\Combat\Score.cs" />
      <Compile Include="Assets\_Scripts\Player\Combat\Stamina.cs" />
      <Compile Include="Assets\_Scripts\Player\Movement\HandleInput.cs" />
-     <Compile Include="Assets\_Scripts\Player\Movement\SimpleMovement.cs" />
+     <Compile Include="Assets\_Scripts\Player\Movement\PlayerMovement.cs" />
      <Compile Include="Assets\_Scripts\Player\StairHandler.cs" />
      <Compile Include="Assets\_Scripts\Save\SaveLoad.cs" />
      <Compile Include="Assets\_Scripts\Save\SavePoint.cs" />

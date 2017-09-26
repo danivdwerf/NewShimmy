@@ -53,14 +53,14 @@ public class TextBoxManager : MonoBehaviour
     {
         isActive = true;
         textBox.SetActive(true);
-        SimpleMovement.move.enabled = false;
+//        SimpleMovement.move.enabled = false;
     }
 
     public void DisableTextBox()
     {
         isActive = false;
         textBox.SetActive(false);
-        SimpleMovement.move.enabled = true;
+//        SimpleMovement.move.enabled = true;
     }
 
     public void ReloadScript(TextAsset newFile)
