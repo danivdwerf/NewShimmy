@@ -6,12 +6,10 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private Button firstButton;
     [SerializeField] private GameObject pausePanel;
-    [SerializeField] private GameObject equipmentPanel;
 
     void Start()
     {
         pausePanel.SetActive(false);
-        equipmentPanel.SetActive(false);
     }
 
     public void QuitGame()
