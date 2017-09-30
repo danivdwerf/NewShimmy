@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -32,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         var x = Input.GetAxisRaw (Controller.LeftStickX) * speed;
         var z = Input.GetAxisRaw (Controller.LeftStickY) * speed;
-        if ((z!=0 || x!=0) && Input.GetButton(Controller.LeftThumb))
+        if ((z!=0 || x!=0) && Input.GetButton(Controller.Circle))
             runScaler = runSpeed;
         else
             runScaler = 1;
@@ -49,6 +48,6 @@ public class PlayerMovement : MonoBehaviour
         velocity.y = 0.0f;
         rigid.MovePosition(rigid.position + velocity);
         anim.SetFloat(_velocityAnim, velocity.sqrMagnitude);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(prevMovement), 0.1f);
+//        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(prevMovement), 0.1f);
     }
 }
