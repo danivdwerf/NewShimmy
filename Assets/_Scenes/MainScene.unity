@@ -9019,9 +9019,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 3
-  orbitDampening: 20
-  maxY: 60
-  minY: 0
+  orbitDampening: 10
+  maxY: 70
+  minY: 10
   offset: -6
   cameraDisabled: 0
 --- !u!1 &1931407749

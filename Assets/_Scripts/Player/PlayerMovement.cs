@@ -48,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
         velocity.y = 0.0f;
         rigid.MovePosition(rigid.position + velocity);
         anim.SetFloat(_velocityAnim, velocity.sqrMagnitude);
+        if(velocity != Vector3.zero)
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(velocity), 0.1f);
 //        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(prevMovement), 0.1f);
     }
 }
