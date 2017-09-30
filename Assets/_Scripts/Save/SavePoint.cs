@@ -34,15 +34,11 @@ public class SavePoint : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel") && PlayerStates.playerStates.saving)
-        {
+        if (Input.GetButtonDown(Controller.Circle) && PlayerStates.playerStates.saving)
             ReturnToGame();
-        }
 
-        if (Input.GetButtonDown("Submit") && inSaveArea)
-        {
+        if (Input.GetButtonDown(Controller.Square) && inSaveArea)
             SavingPoint();
-        }
     }
     
     void SavingPoint()

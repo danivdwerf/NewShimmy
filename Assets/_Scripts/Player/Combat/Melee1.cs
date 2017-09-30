@@ -20,7 +20,7 @@ public class Melee1 : MonoBehaviour
 
     void Update ()
     {
-        if (Input.GetButtonDown("Hit1") && Stamina.stam.curStamina >= 20)
+        if (Input.GetButtonDown(Controller.R1) && Stamina.stam.curStamina >= 20)
         { 
             Stamina.stam.curStamina -= takeStamina;
             if (Physics.Raycast(transform.position, transform.forward, out hit))

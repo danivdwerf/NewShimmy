@@ -25,7 +25,7 @@ public class Flask : MonoBehaviour
         flasks.text = "Flasks left: " + flaskLeft.ToString();
         if (flaskLeft > 0)
         {
-            if (Input.GetButtonDown("Heal"))
+            if (Input.GetButtonDown(Controller.Square))
             {
                 PlayerHealth.health.curHealth += flaskHealing;
                 flaskLeft -= 1;

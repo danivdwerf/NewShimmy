@@ -28,7 +28,7 @@ public class Upgrade : MonoBehaviour
 
 	void Update () 
     {
-        if (Input.GetButtonDown("Submit") && isClose)
+        if (Input.GetButtonDown(Controller.Cross) && isClose)
         {
             PlayerStates.playerStates.LevelUp();
             Destroy(gameObject);

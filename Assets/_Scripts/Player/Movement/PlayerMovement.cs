@@ -11,35 +11,39 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rigid;
     private Vector3 movement;
     private Vector3 prevMovement;
+    private Camera camera;
 
     private void Start()
     {
         runScaler = 0;
         movement = Vector3.zero;
         prevMovement = Vector3.zero;
+        this.camera = Camera.main;
 
         rigid = GetComponent<Rigidbody> ();
     }
 
     private void Update()
     {
-        var x = Input.GetAxisRaw ("Horizontal");
-        var z = Input.GetAxisRaw ("Vertical");
-        if ((z!=0 || x!=0) && Input.GetKey(KeyCode.LeftShift))
+        var x = Input.GetAxisRaw (Controller.LeftStickX);
+        var z = Input.GetAxisRaw (Controller.LeftStickY);
+        if ((z!=0 || x!=0) && Input.GetButton(Controller.LeftThumb))
             runScaler = runSpeed;
         else
-            runScaler = runSpeed/runSpeed;
+            runScaler = 1;
 
-        movement = new Vector3 (x,0,z);
+        movement = new Vector3 (x, 0, z);
 
-        if (!(x == 0 && z == 0))
+        if (x != 0 && z != 0)
             prevMovement = movement;
     }
 
     private void FixedUpdate()
     {
-        Vector3 velocity = movement.normalized * speed * runScaler * Time.fixedDeltaTime;
+        Vector3 velocity = camera.transform.TransformDirection(movement) * speed * runScaler * Time.fixedDeltaTime;
+        velocity.y = 0.0f;
+        this.transform.rotation = Quaternion.Euler(0, camera.transform.rotation.eulerAngles.y, 0);
         rigid.MovePosition(rigid.position + velocity);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(prevMovement), 0.1F);
+//        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(prevMovement), 0.1f);
     }
 }

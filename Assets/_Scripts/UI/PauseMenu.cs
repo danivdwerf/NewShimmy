@@ -22,11 +22,11 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Pause") && !PlayerStates.playerStates.paused && !PlayerStates.playerStates.saving)
+        if (Input.GetButtonDown(Controller.RightThumb) && !PlayerStates.playerStates.paused && !PlayerStates.playerStates.saving)
         {
             PauseGame();
         }
-        else if (Input.GetButtonDown("Pause") && PlayerStates.playerStates.paused) 
+        else if (Input.GetButtonDown(Controller.RightThumb) && PlayerStates.playerStates.paused) 
         {
             ContinueGame();
         }
