@@ -44,12 +44,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 velocity = camera.transform.TransformDirection(movement) * runScaler * Time.fixedDeltaTime;
+        this.movement *= runScaler;
+        Vector3 velocity = camera.transform.TransformDirection(movement) * Time.fixedDeltaTime;
         velocity.y = 0.0f;
         rigid.MovePosition(rigid.position + velocity);
-        anim.SetFloat(_velocityAnim, (movement * runScaler).sqrMagnitude);
+        anim.SetFloat(_velocityAnim, movement.sqrMagnitude);
         if(velocity != Vector3.zero)
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(velocity), 0.1f);
-//        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(prevMovement), 0.1f);
     }
 }
