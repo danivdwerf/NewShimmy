@@ -4,12 +4,30 @@ using UnityEngine;
 
 public class FollowObject : MonoBehaviour 
 {
-    [SerializeField]private float xOffset, yOffset, zOffset;
+    [SerializeField]private float xOffset = 0.0f;
+    [SerializeField]private float yOffset = 0.0f;
+    [SerializeField]private float zOffset = 0.0f;
     [SerializeField]private Transform objectToFollow;
 
-    private void LateUpdate()
+    [SerializeField]private bool lerp = true;
+    [SerializeField]private float lerpTime = 10.0f;
+
+    private void Update()
     {
-        this.transform.position = new Vector3 (objectToFollow.position.x - xOffset, objectToFollow.position.y - yOffset, objectToFollow.position.z - zOffset);
-        this.transform.LookAt (objectToFollow.position);
+        if (objectToFollow == null)
+            return;
+
+        if (!lerp)
+        {
+            this.transform.position = new Vector3(objectToFollow.position.x - xOffset, objectToFollow.position.y - yOffset, objectToFollow.position.z - zOffset);
+            return;
+        }
+
+        this.transform.position = Vector3.Lerp(this.transform.position, objectToFollow.position, Time.deltaTime * lerpTime);
+    }
+
+    public void setTarget(GameObject target)
+    {
+        this.objectToFollow = target.transform;
     }
 }
