@@ -56,7 +56,6 @@ public class NetworkManager : Photon.PunBehaviour
 
     public void OnCreatedRoom()
     {
-        print("Created Room");
         this.load(false);
     }
 

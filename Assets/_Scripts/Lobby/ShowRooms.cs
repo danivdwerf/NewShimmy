@@ -81,7 +81,6 @@ public class ShowRooms : MonoBehaviour
             label.text = rooms[index].Name + " (" +rooms[index].Size + "/" + NetworkValues.MAX_PLAYERS + ")";
             button.onClick.AddListener(delegate(){networkManager.joinRoom(rooms[index].Name);});
             button.gameObject.SetActive(true);
-            return;
         }
     }
 }
