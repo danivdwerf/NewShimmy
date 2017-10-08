@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
+[AddComponentMenu("Camera/OrbitalCamera")]
 public class OrbitalCamera : MonoBehaviour 
 {
     [SerializeField]private float sensitivity = 4.0f;
