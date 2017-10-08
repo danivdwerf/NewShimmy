@@ -22,6 +22,7 @@ public class PlayerMovement : Photon.MonoBehaviour
        
         this.anim = this.GetComponent<Animator>();
         this._velocityAnim = Animator.StringToHash("velocity");
+        this.mainCam = this.GetComponent<PlayerCam>().PlayerCamera;
 
         rigid = GetComponent<Rigidbody> ();
     }
@@ -30,9 +31,6 @@ public class PlayerMovement : Photon.MonoBehaviour
     {
         if (!photonView.isMine)
             return;
-        
-        if (this.mainCam == null)
-            this.mainCam = this.GetComponent<PlayerCam>().PlayerCamera;
         
         var x = Input.GetAxisRaw (Controller.LeftStickX) * speed;
         var z = Input.GetAxisRaw (Controller.LeftStickY) * speed;

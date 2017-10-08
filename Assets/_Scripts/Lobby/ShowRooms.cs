@@ -9,7 +9,6 @@ public class ShowRooms : MonoBehaviour
 
     [SerializeField]private GameObject parent;
     [SerializeField]private Font buttonFont;
-    [SerializeField]private Button refreshButton;
 
     private Button[] buttons;
     private Text[] buttonLabels;
@@ -21,9 +20,10 @@ public class ShowRooms : MonoBehaviour
         buttons = new Button[NetworkValues.MAXROOMS];
         buttonLabels = new Text[NetworkValues.MAXROOMS];
 
-        this.networkManager = GameObject.FindGameObjectWithTag(Tags.NetworkManager).GetComponent<NetworkManager>();
+        this.networkManager = FindObjectOfType<NetworkManager>();
         this.loadRooms = this.GetComponent<LoadRooms>();
         loadRooms.OnLoadedRooms += this.showRooms;
+
         this.createButtons();
     }
 
@@ -68,13 +68,17 @@ public class ShowRooms : MonoBehaviour
         for(var i = 0; i < rooms.Count; i++)
         {
             var index = i;
+
+            if (rooms[i].Size >= NetworkValues.MAX_PLAYERS)
+                continue;
+            
             if (buttons[index].gameObject.activeInHierarchy)
                 continue;
 
             var button = buttons[index];
             var label = buttonLabels[index];
 
-            label.text = rooms[index].Name;
+            label.text = rooms[index].Name + " (" +rooms[index].Size + "/" + NetworkValues.MAX_PLAYERS + ")";
             button.onClick.AddListener(delegate(){networkManager.joinRoom(rooms[index].Name);});
             button.gameObject.SetActive(true);
             return;

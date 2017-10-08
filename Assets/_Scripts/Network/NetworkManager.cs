@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 
 using System;
+using System.Collections.Generic;
 
 public class NetworkManager : Photon.PunBehaviour
 {
@@ -12,30 +13,45 @@ public class NetworkManager : Photon.PunBehaviour
     [SerializeField]private string playerPrefabName;
     [SerializeField]private bool dontDestroyOnLoad = true;
 
+    [SerializeField]private bool autoJoinLobby = true;
+    [SerializeField]private bool offline = false;
+
+    private NetworkPosition[] networkPositions;
+
     private void Start()
     {
         this.load(true);
-        PhotonNetwork.autoJoinLobby = true;
+        this.networkPositions= GameObject.FindObjectsOfType<NetworkPosition>();
+
         if (this.dontDestroyOnLoad)
             DontDestroyOnLoad(this);
+        
         this.connect();
     }
         
     private void connect()
     {
-        PhotonNetwork.ConnectUsingSettings(NetworkValues.VERSION);
+        PhotonNetwork.autoJoinLobby = this.autoJoinLobby;
+        PhotonNetwork.offlineMode = this.offline;
+
+        if(!this.offline)
+            PhotonNetwork.ConnectUsingSettings(NetworkValues.VERSION);
     }
 
     private void OnJoinedLobby()
     {
-        print("Joined lobby");
         this.load(false);
     }
 
     public void createRoom(string roomName)
     {
+        if (PhotonNetwork.GetRoomList().Length >= NetworkValues.MAXROOMS)
+            return;
+        
         this.load(true);
-        PhotonNetwork.CreateRoom(roomName);
+        RoomOptions options = new RoomOptions();
+        options.MaxPlayers = (byte)NetworkValues.MAX_PLAYERS;
+        PhotonNetwork.CreateRoom(roomName, options, null);
     }
 
     public void OnCreatedRoom()
@@ -58,9 +74,6 @@ public class NetworkManager : Photon.PunBehaviour
 
     private void OnJoinedRoom()
     {
-        print("Joined room");
-        //Load Level
-
         if (this.JoinedRoom != null)
             this.JoinedRoom(this.levelLoaded);
     }
@@ -73,11 +86,8 @@ public class NetworkManager : Photon.PunBehaviour
 
     private void levelLoaded()
     {
-        var networkPosition = GameObject.FindObjectOfType<NetworkPosition>();
-        var player = PhotonNetwork.Instantiate(this.playerPrefabName, networkPosition.Postion, networkPosition.Rotation, 0);
-        player.GetComponent<PlayerMovement>().enabled = true;
-        player.GetComponent<PlayerAttack>().enabled = true;
-        player.GetComponent<PlayerCam>().enabled = true;
+        var spawnTransform = networkPositions[UnityEngine.Random.Range(0, networkPositions.Length)]; 
+        PhotonNetwork.Instantiate(this.playerPrefabName, spawnTransform.Postion, spawnTransform.Rotation, 0);
         this.load(false);
     }
 

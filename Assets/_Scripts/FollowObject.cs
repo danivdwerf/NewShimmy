@@ -16,14 +16,16 @@ public class FollowObject : MonoBehaviour
     {
         if (objectToFollow == null)
             return;
+        
+        var desiredPos = new Vector3(objectToFollow.position.x - xOffset, objectToFollow.position.y - yOffset, objectToFollow.position.z - zOffset);
 
         if (!lerp)
         {
-            this.transform.position = new Vector3(objectToFollow.position.x - xOffset, objectToFollow.position.y - yOffset, objectToFollow.position.z - zOffset);
+            this.transform.position = desiredPos;
             return;
         }
 
-        this.transform.position = Vector3.Lerp(this.transform.position, objectToFollow.position, Time.deltaTime * lerpTime);
+        this.transform.position = Vector3.Lerp(this.transform.position, desiredPos, Time.deltaTime * lerpTime);
     }
 
     public void setTarget(GameObject target)

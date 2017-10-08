@@ -129,8 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: 3
   orbitDampening: 10
-  maxY: 70
-  minY: 10
+  maxY: 50
+  minY: 0
   offset: -6
   cameraDisabled: 0
 --- !u!114 &114759824216828340
@@ -145,11 +145,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xOffset: 0
-  yOffset: 0
+  yOffset: -1
   zOffset: 0
   objectToFollow: {fileID: 0}
   lerp: 0
-  lerpTime: 4
+  lerpTime: 5
 --- !u!124 &124632234694223664
 Behaviour:
   m_ObjectHideFlags: 1

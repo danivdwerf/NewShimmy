@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -8,24 +9,35 @@ public struct OnlineRoom
     private string name;
     public string Name{get{return this.name;}}
 
-    public OnlineRoom(string roomName = "New Room")
+    private int size;
+    public int Size{get{return this.size;}}
+
+    public OnlineRoom(string roomName = "Room", int size = 0)
     {
         this.name = roomName;
+        this.size = size;
     }
 };
 
 public class LoadRooms : MonoBehaviour 
 {
+    [SerializeField]private float refreshRate = 5.0f;
     public Action<List<OnlineRoom>> OnLoadedRooms;
 
-    public void showRooms()
+    private void Start()
+    {
+        this.loadRooms();
+        StartCoroutine("refreshRooms");
+    }
+
+    public void loadRooms()
     {
         var roomList = PhotonNetwork.GetRoomList();
         var rooms = new List<OnlineRoom>();
 
         for (var i = 0; i < roomList.Length; i++)
         {
-            var currentRoom = new OnlineRoom(roomList[i].Name);
+            var currentRoom = new OnlineRoom(roomList[i].Name, roomList[i].PlayerCount);
             rooms.Add(currentRoom);
         }
 
@@ -33,9 +45,12 @@ public class LoadRooms : MonoBehaviour
             OnLoadedRooms(rooms);
     }
 
-    private void Update()
+    private IEnumerator refreshRooms()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-            this.showRooms();
+        while (true)
+        {
+            yield return new WaitForSeconds(this.refreshRate);
+            this.loadRooms();
+        }
     }
 }

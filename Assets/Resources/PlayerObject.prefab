@@ -616,6 +616,7 @@ GameObject:
   - component: {fileID: 114380209992192182}
   - component: {fileID: 114005143368565552}
   - component: {fileID: 114651073911802592}
+  - component: {fileID: 114619774306836234}
   m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Untagged
@@ -2208,6 +2209,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraPrefab: {fileID: 1517844256661008, guid: f6478045f60e14f9390ca435f292ce9c,
     type: 2}
+--- !u!114 &114619774306836234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1646339245944756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09900c6dc13694376b566731fba5b7ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114651073911802592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2230,7 +2242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30164946184764822b43749729c39512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6.5
+  speed: 4
   runSpeed: 2
 --- !u!136 &136188510578136298
 CapsuleCollider:
@@ -2241,7 +2253,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25
+  m_Radius: 0.4
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.87, z: 0}
