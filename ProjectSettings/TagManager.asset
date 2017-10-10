@@ -9,6 +9,8 @@ TagManager:
   - EnemyCanvas
   - StairUp
   - StairDown
+  - NetworkManager
+  - NPC
   layers:
   - Default
   - TransparentFX

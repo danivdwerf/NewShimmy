@@ -4,23 +4,32 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Collections.Generic;
 
+[AddComponentMenu("Networking/Manager")]
 public class NetworkManager : Photon.PunBehaviour
 {
+    private enum PlayerSpawning{Random, Increase}
+
     public Action<bool> OnLoad;
     public Action<Action> JoinedRoom;
     public Action<string> OnFeedback;
 
     [SerializeField]private string playerPrefabName;
-    [SerializeField]private bool dontDestroyOnLoad = true;
+    [SerializeField]private PlayerSpawning spawntype;
 
+    [SerializeField]private bool dontDestroyOnLoad = true;
     [SerializeField]private bool autoJoinLobby = true;
     [SerializeField]private bool offline = false;
 
+    [SerializeField]private GameObject lobby;
+    [SerializeField]private GameObject game;
+
     private NetworkPosition[] networkPositions;
 
-    private void Start()
+    private void Awake()
     {
         this.load(true);
+        PhotonNetwork.autoJoinLobby = this.autoJoinLobby;
+        PhotonNetwork.offlineMode = this.offline;
         this.networkPositions= GameObject.FindObjectsOfType<NetworkPosition>();
 
         if (this.dontDestroyOnLoad)
@@ -31,10 +40,7 @@ public class NetworkManager : Photon.PunBehaviour
         
     private void connect()
     {
-        PhotonNetwork.autoJoinLobby = this.autoJoinLobby;
-        PhotonNetwork.offlineMode = this.offline;
-
-        if(!this.offline)
+        if (!this.offline)
             PhotonNetwork.ConnectUsingSettings(NetworkValues.VERSION);
     }
 
@@ -85,9 +91,21 @@ public class NetworkManager : Photon.PunBehaviour
 
     private void levelLoaded()
     {
-        var spawnTransform = networkPositions[UnityEngine.Random.Range(0, networkPositions.Length)]; 
+        NetworkPosition spawnTransform;
+        if (spawntype == PlayerSpawning.Random)
+            spawnTransform = networkPositions[UnityEngine.Random.Range(0, networkPositions.Length)];
+        else
+            spawnTransform = networkPositions[PhotonNetwork.playerList.Length - 1];
         PhotonNetwork.Instantiate(this.playerPrefabName, spawnTransform.Postion, spawnTransform.Rotation, 0);
         this.load(false);
+    }
+
+    private void OnDisconnectedFromPhoton()
+    {
+        game.SetActive(false);
+        lobby.SetActive(true);
+        if (!this.offline)
+            PhotonNetwork.ConnectUsingSettings(NetworkValues.VERSION);
     }
 
     private void load(bool value)
