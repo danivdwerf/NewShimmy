@@ -33,6 +33,7 @@ public class PlayerMovement : Photon.MonoBehaviour
             return;
         
         var x = Input.GetAxisRaw (Controller.LeftStickX) * speed;
+        anim.SetFloat("direction", x);
         var z = Input.GetAxisRaw (Controller.LeftStickY) * speed;
         if ((z!=0 || x!=0) && Input.GetButton(Controller.Circle))
             runScaler = runSpeed;

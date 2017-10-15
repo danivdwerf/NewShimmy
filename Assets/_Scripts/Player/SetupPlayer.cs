@@ -13,6 +13,7 @@ public class SetupPlayer : Photon.MonoBehaviour
         this.GetComponent<PlayerCam>().enabled = true;
         this.GetComponent<PlayerMovement>().enabled = true;
         this.GetComponent<PlayerAttack>().enabled = true;
+        this.GetComponent<LockOnTarget>().enabled = true;
 
         this.enabled = false;
     }

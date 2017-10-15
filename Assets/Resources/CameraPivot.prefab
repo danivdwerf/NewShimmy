@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda6ad37d3c5143e9aa67e4e1224a5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 3
+  sensitivity: 170
   orbitDampening: 10
   maxY: 50
   minY: 0
