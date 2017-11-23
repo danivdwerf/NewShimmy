@@ -23,6 +23,7 @@ public class PlayerMovement : Photon.MonoBehaviour
         this.anim = this.GetComponent<Animator>();
         this._velocityAnim = Animator.StringToHash("velocity");
         this.mainCam = this.GetComponent<PlayerCam>().PlayerCamera;
+        Cursor.lockState = CursorLockMode.Locked;
 
         rigid = GetComponent<Rigidbody> ();
     }
@@ -32,15 +33,15 @@ public class PlayerMovement : Photon.MonoBehaviour
         if (!photonView.isMine)
             return;
         
-        var x = Input.GetAxisRaw (Controller.LeftStickX) * speed;
+        var x = Input.GetAxisRaw (Controller.LeftStickX);
         anim.SetFloat("direction", x);
-        var z = Input.GetAxisRaw (Controller.LeftStickY) * speed;
-        if ((z!=0 || x!=0) && Input.GetButton(Controller.Circle))
+        var z = Input.GetAxisRaw (Controller.LeftStickY);
+        if ((z!=0 || x!=0) && Input.GetButton(Controller.Run))
             runScaler = runSpeed;
         else
             runScaler = 1;
 
-        movement = new Vector3 (x, 0, z);
+        movement = new Vector3 (x, 0, -z);
     }
 
     private void FixedUpdate()
@@ -51,13 +52,16 @@ public class PlayerMovement : Photon.MonoBehaviour
         if (this.mainCam == null)
             return;
         
-        this.movement *= runScaler;
-        Vector3 velocity = mainCam.transform.TransformDirection(movement) * Time.fixedDeltaTime;
+        var movementDirection = mainCam.transform.TransformDirection(movement);
+        var leftCross = Vector3.Cross(movementDirection, Vector3.up);
+        var forwardCross = Vector3.Cross(Vector3.up, leftCross);
+        Vector3 velocity = forwardCross.normalized * speed * runScaler * Time.fixedDeltaTime;
         velocity.y = 0.0f;
+           
+        if(velocity != Vector3.zero)
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(velocity), 0.1f);
 
         rigid.MovePosition(rigid.position + velocity);
         anim.SetFloat(_velocityAnim, movement.sqrMagnitude);
-        if(velocity != Vector3.zero)
-            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(velocity), 0.1f);
     }
 }

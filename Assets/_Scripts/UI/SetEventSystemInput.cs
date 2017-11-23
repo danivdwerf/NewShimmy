@@ -11,7 +11,7 @@ public class SetEventSystemInput : MonoBehaviour
 
         inputModule.horizontalAxis = Controller.LeftStickX;
         inputModule.verticalAxis = Controller.LeftStickY;
-        inputModule.submitButton = Controller.Cross;
-        inputModule.cancelButton = Controller.Circle;
+        inputModule.submitButton = Controller.Submit;
+        inputModule.cancelButton = Controller.Cancel;
     }
 }

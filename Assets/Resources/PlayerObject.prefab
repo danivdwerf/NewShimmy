@@ -613,13 +613,14 @@ GameObject:
   - component: {fileID: 54605448779291958}
   - component: {fileID: 136188510578136298}
   - component: {fileID: 114949449382960974}
-  - component: {fileID: 114330880173082216}
   - component: {fileID: 114380209992192182}
   - component: {fileID: 114005143368565552}
   - component: {fileID: 114651073911802592}
   - component: {fileID: 114619774306836234}
   - component: {fileID: 114992936072731134}
   - component: {fileID: 135526672504832926}
+  - component: {fileID: 114879453218499844}
+  - component: {fileID: 114167838181856352}
   m_Layer: 12
   m_Name: PlayerObject
   m_TagString: Player
@@ -2100,6 +2101,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2115,6 +2117,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -2188,15 +2191,15 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
---- !u!114 &114330880173082216
+--- !u!114 &114167838181856352
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1646339245944756}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d365fd8402b094d46b3114247d302b66, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a9ee533e9d194783addcf810f7d46b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114380209992192182
@@ -2232,6 +2235,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7580ecd2d4a3b4d82901c21666902581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114879453218499844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1646339245944756}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d365fd8402b094d46b3114247d302b66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114949449382960974
@@ -2305,6 +2319,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2320,6 +2335,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -2401,6 +2417,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2416,6 +2433,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

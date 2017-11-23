@@ -1,24 +1,14 @@
 ﻿using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour 
+public class NPCAttack : MonoBehaviour 
 {
-    private Animator anim;
-    private int _attackAnim;
-
+//    private Animator anim;
     private int attackState;
 
     private void Start()
     {
-        this.anim = this.GetComponent<Animator>();
-        this._attackAnim = Animator.StringToHash("attack");
-
+//        this.anim = this.GetComponent<Animator>();
         this.attackState = 0;
-    }
-
-    private void Update()
-    {
-        if (Input.GetButtonDown(Controller.Attack))
-            this.anim.SetTrigger(this._attackAnim);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
         if (attackState == 0)
             return;
 
+        print("player hit");
         other.gameObject.SendMessage("OnWeaponEnter", SendMessageOptions.DontRequireReceiver);
     }
 

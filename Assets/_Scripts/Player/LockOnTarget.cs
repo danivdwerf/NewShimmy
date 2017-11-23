@@ -27,14 +27,18 @@ public class LockOnTarget : MonoBehaviour
         if (targetsInReach.Count < 1)
             return;
         
-        if (Input.GetButtonDown(Controller.LeftThumb))
+        if (Input.GetButtonDown(Controller.Target))
             targetting = !targetting;
 
         if (!targetting)
             return;
         
         currentTarget = targetsInReach[0];
-        this.transform.LookAt(currentTarget.transform);
+//        this.transform.LookAt(currentTarget.transform);
+        var lookPos = currentTarget.transform.position - transform.position;
+        lookPos.y = 0;
+        var rotation = Quaternion.LookRotation(lookPos);
+        this.transform.rotation = rotation;
         cam.targetMode(this.transform.rotation.eulerAngles);
     }
 
@@ -61,6 +65,10 @@ public class LockOnTarget : MonoBehaviour
             return;
 
         if (other.isTrigger)
+            return;
+
+        var distance = (other.transform.position - this.transform.position).sqrMagnitude;
+        if (distance <= 10)
             return;
         
         targetsInReach.RemoveAt(targetsInReach.IndexOf(other.gameObject));

@@ -220,7 +220,7 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: Event OnAttackFinish has a time (0.985918) outside the
+    animationImportWarnings: Event OnAttackFinish has a time (1.000000) outside the
       clip's valid range (0.000000..0.866667). It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
@@ -256,11 +256,26 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.29644492
+        functionName: AttackEvent
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: b8075de6a96a444998a6077f0c7ed8cb,
+          type: 3}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.48351648
+        functionName: AttackEvent
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: b8075de6a96a444998a6077f0c7ed8cb,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 1
         functionName: OnAttackFinish
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 950873fad72c44c5487a8173bf3e5f25,
-          type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

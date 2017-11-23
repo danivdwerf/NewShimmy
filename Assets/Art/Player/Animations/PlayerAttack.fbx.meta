@@ -202,7 +202,8 @@ ModelImporter:
       - time: 0.3033033
         functionName: AttackEvent
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: d365fd8402b094d46b3114247d302b66,
+          type: 3}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
