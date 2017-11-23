@@ -14,14 +14,14 @@ public class NPCHealth : MonoBehaviour
 
     private Animator anim;
     private PhotonView photonView;
-    private NPCBehaviour ai;
+    //private NPCBehaviour ai;
 
     private void Start()
     {
         this.currentHealth = this.maxHealth;
         this.photonView = PhotonView.Get(this.gameObject);
         this.anim = this.GetComponent<Animator>();
-        this.ai = this.GetComponent<NPCBehaviour>();
+        //this.ai = this.GetComponent<NPCBehaviour>();
     }
 
     public void OnWeaponEnter()
@@ -33,7 +33,7 @@ public class NPCHealth : MonoBehaviour
     private void takeDamage()
     {
         currentHealth -= 20;
-        ai.OnAttackFinish();
+        //ai.OnAttackFinish();
         anim.SetTrigger("damage");
 
         if (this.OnTakeDamage != null)
