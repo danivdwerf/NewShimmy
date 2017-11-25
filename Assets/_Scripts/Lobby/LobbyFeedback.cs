@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class LobbyFeedback : MonoBehaviour 
 {
-    [SerializeField]private Text feedback;
+    [SerializeField]private Text feedback = null;
     private NetworkManager manager;
 
     private void Start()

@@ -2,7 +2,7 @@
 
 public class ShowLoadPanel : MonoBehaviour 
 {
-    [SerializeField]private GameObject loadPanel;
+    [SerializeField]private GameObject loadPanel = null;
     private NetworkManager networkManager;
 
     private void Awake()

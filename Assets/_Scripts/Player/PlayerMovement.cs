@@ -3,8 +3,8 @@
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : Photon.MonoBehaviour
 {
-    [SerializeField]private float speed;
-    [SerializeField]private float runSpeed;
+    [SerializeField] private float speed = 4.0f;
+    [SerializeField] private float runSpeed = 2.0f;
     private float runScaler;
 
     private Animator anim;
@@ -55,13 +55,13 @@ public class PlayerMovement : Photon.MonoBehaviour
         var movementDirection = mainCam.transform.TransformDirection(movement);
         var leftCross = Vector3.Cross(movementDirection, Vector3.up);
         var forwardCross = Vector3.Cross(Vector3.up, leftCross);
-        Vector3 velocity = forwardCross.normalized * speed * runScaler * Time.fixedDeltaTime;
+        Vector3 velocity = forwardCross * speed * runScaler * Time.fixedDeltaTime;
         velocity.y = 0.0f;
            
         if(velocity != Vector3.zero)
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(velocity), 0.1f);
 
         rigid.MovePosition(rigid.position + velocity);
-        anim.SetFloat(_velocityAnim, movement.sqrMagnitude);
+        anim.SetFloat(_velocityAnim, velocity.sqrMagnitude);
     }
 }

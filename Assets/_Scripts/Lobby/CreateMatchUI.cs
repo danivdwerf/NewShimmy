@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class CreateMatchUI : MonoBehaviour 
 {
-    [SerializeField]private InputField roomName;
-    [SerializeField]private Button submitButton;
+    [SerializeField]private InputField roomName = null;
+    [SerializeField]private Button submitButton = null;
 
     private NetworkManager manager;
 

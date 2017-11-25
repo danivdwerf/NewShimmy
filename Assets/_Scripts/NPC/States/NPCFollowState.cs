@@ -4,11 +4,18 @@ using UnityEngine.AI;
 public class NPCFollowState : NPCBehaviour 
 {
     [SerializeField]private float attackDistance = 10.0f;
+    [SerializeField]private float rotationSpeed = 5.0f;
+
+    private int _dead;
+    private int _velocity;
+
     public override void enter()
     {
-        //print("follow");
         agent.stoppingDistance = this.attackDistance;
         agent.isStopped = false;
+
+        this._dead = Animator.StringToHash("dead");
+        this._velocity = Animator.StringToHash("velocity");
     }
 
     public override void update()
@@ -17,17 +24,27 @@ public class NPCFollowState : NPCBehaviour
             return;
 
         if (this.target == null)
+        {
             stateHandler.setState(EnemyStates.idle);
+            return;
+        }
 
-        print("following");
         agent.SetDestination(target.position);
-        anim.SetFloat("velocity", agent.velocity.sqrMagnitude, 0.5f, Time.deltaTime);
-        this.dead = anim.GetBool("dead");
+        this.rotateTowardsTarget();
+        anim.SetFloat(_velocity, agent.velocity.sqrMagnitude, 0.5f, Time.deltaTime);
+        this.dead = anim.GetBool(_dead);
 
         var distance = (this.transform.position - target.position).sqrMagnitude;
-        if (distance > attackDistance)
+        if (distance > this.attackDistance && this.targetInFront())
             return;
+        
         stateHandler.setState(EnemyStates.attack);
+    }
+
+    private void rotateTowardsTarget()
+    {
+        Vector3 lookrotation = agent.steeringTarget - transform.position;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookrotation), this.rotationSpeed * Time.deltaTime);
     }
 
     public override void leave()

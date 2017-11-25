@@ -3,7 +3,7 @@ guid: ddb8c7bd994624019803cce66d7a6bb0
 timeCreated: 1507642857
 licenseType: Free
 ModelImporter:
-  serializedVersion: 21
+  serializedVersion: 22
   fileIDToRecycleName:
     100000: boss:Arms_Geo
     100002: boss:Cigar_Geo
@@ -207,10 +207,12 @@ ModelImporter:
     13700016: boss:Shoes_Geo
     13700018: boss:Teeth_Down_Geo
     13700020: boss:Teeth_Up_Geo
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -224,6 +226,7 @@ ModelImporter:
       clip's valid range (0.000000..0.866667). It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -256,10 +259,10 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.29644492
+      - time: 0.2617227
         functionName: AttackEvent
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: b8075de6a96a444998a6077f0c7ed8cb,
+        objectReferenceParameter: {fileID: 11500000, guid: 4e362745a4d974f4db4c92809ea0b4f8,
           type: 3}
         floatParameter: 0
         intParameter: 1
@@ -267,7 +270,7 @@ ModelImporter:
       - time: 0.48351648
         functionName: AttackEvent
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: b8075de6a96a444998a6077f0c7ed8cb,
+        objectReferenceParameter: {fileID: 11500000, guid: 4e362745a4d974f4db4c92809ea0b4f8,
           type: 3}
         floatParameter: 0
         intParameter: 0
@@ -275,7 +278,8 @@ ModelImporter:
       - time: 1
         functionName: OnAttackFinish
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: 4e362745a4d974f4db4c92809ea0b4f8,
+          type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

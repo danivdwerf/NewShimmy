@@ -71,7 +71,7 @@ namespace ExitGames.UtilityScripts
 		int[] _playerIds;
 		object _indexes;
 		Dictionary<int,int> _indexesLUT;
-		List<bool> _indexesPool;
+		//List<bool> _indexesPool;
 		PhotonPlayer _p;
 
 		#endregion

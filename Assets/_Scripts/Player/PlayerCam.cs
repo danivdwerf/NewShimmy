@@ -2,7 +2,7 @@
 
 public class PlayerCam : MonoBehaviour 
 {
-    [SerializeField]private GameObject cameraPrefab;
+    [SerializeField]private GameObject cameraPrefab = null;
     private Camera playerCam;
     public Camera PlayerCamera{get{return playerCam;}}
 

@@ -13,15 +13,15 @@ public class NetworkManager : Photon.PunBehaviour
     public Action<Action> JoinedRoom;
     public Action<string> OnFeedback;
 
-    [SerializeField]private string playerPrefabName;
-    [SerializeField]private PlayerSpawning spawntype;
+    [SerializeField]private string playerPrefabName = null;
+    [SerializeField]private PlayerSpawning spawntype = PlayerSpawning.Random;
 
     [SerializeField]private bool dontDestroyOnLoad = true;
     [SerializeField]private bool autoJoinLobby = true;
     [SerializeField]private bool offline = false;
 
-    [SerializeField]private GameObject lobby;
-    [SerializeField]private GameObject game;
+    [SerializeField]private GameObject lobby = null;
+    [SerializeField]private GameObject game = null;
 
     private NetworkPosition[] networkPositions;
 
@@ -44,7 +44,7 @@ public class NetworkManager : Photon.PunBehaviour
             PhotonNetwork.ConnectUsingSettings(NetworkValues.VERSION);
     }
 
-    private void OnJoinedLobby()
+    public override void OnJoinedLobby()
     {
         this.load(false);
     }
@@ -60,12 +60,12 @@ public class NetworkManager : Photon.PunBehaviour
         PhotonNetwork.CreateRoom(roomName, options, null);
     }
 
-    public void OnCreatedRoom()
+    public override void OnCreatedRoom()
     {
         this.load(false);
     }
 
-    private void OnPhotonCreateRoomFailed (object[] codeAndMsg)
+    public override void OnPhotonCreateRoomFailed (object[] codeAndMsg)
     {
         showMessage("Failed to create room");
         load(false);
@@ -77,13 +77,13 @@ public class NetworkManager : Photon.PunBehaviour
         PhotonNetwork.JoinRoom(roomName);
     }
 
-    private void OnJoinedRoom()
+    public override void OnJoinedRoom()
     {
         if (this.JoinedRoom != null)
             this.JoinedRoom(this.levelLoaded);
     }
 
-    private void OnPhotonJoinRoomFailed (object[] codeAndMsg)
+    public override void OnPhotonJoinRoomFailed (object[] codeAndMsg)
     {
         showMessage("Failed to join room");
         load(false);
@@ -100,7 +100,7 @@ public class NetworkManager : Photon.PunBehaviour
         this.load(false);
     }
 
-    private void OnDisconnectedFromPhoton()
+    public override void OnDisconnectedFromPhoton()
     {
         game.SetActive(false);
         lobby.SetActive(true);

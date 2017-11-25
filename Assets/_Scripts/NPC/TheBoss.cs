@@ -20,10 +20,18 @@ public class TheBoss : MonoBehaviour
         states.setState(EnemyStates.idle);
     }
 
+    private void OnEnable()
+    {
+        if (this.states == null)
+            return;
+
+        states.setState(EnemyStates.idle);
+    }
+
     private void setStates()
     {
         states.addState (EnemyStates.idle, GetComponent<NPCIdleState>());
         states.addState (EnemyStates.follow, GetComponent<NPCFollowState>());
-        states.addState(EnemyStates.attack, GetComponent<NPCAttackState>());
+        states.addState (EnemyStates.attack, GetComponent<NPCAttackState>());
     }
 }

@@ -10,7 +10,7 @@ public abstract class NPCBehaviour : MonoBehaviour
     protected Animator anim;
     protected bool dead;
 
-    public virtual void Start()
+    public virtual void Awake()
     {
         this.stateHandler = this.GetComponent<NPCStateHandler>();
         this.agent = this.GetComponent<NavMeshAgent>();
@@ -23,6 +23,15 @@ public abstract class NPCBehaviour : MonoBehaviour
     public virtual void enter(){}
     public abstract void update();
     public virtual void leave(){}
+
+    protected bool targetInFront()
+    {
+        var dir = target.position - this.transform.position;
+        var dotProduct = Vector3.Dot(dir, this.transform.forward);
+        if (dotProduct < 0.8f)
+            return false;
+        return true;
+    }
 
     protected virtual void OnTriggerEnter(Collider other)
     {

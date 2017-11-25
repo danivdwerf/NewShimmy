@@ -3,9 +3,13 @@ using UnityEngine.AI;
 
 public class NPCIdleState : NPCBehaviour 
 {
+    private int _velocity;
+    private int _dead;
+
     public override void enter()
     {
-        print("idle");
+        this._velocity = Animator.StringToHash("velocity");
+        this._dead = Animator.StringToHash("dead");
         agent.isStopped = true;
     }
 
@@ -13,10 +17,13 @@ public class NPCIdleState : NPCBehaviour
     {
         if (this.dead)
             return;
-        
-        if (target == null)
+
+        this.dead = anim.GetBool(_dead);
+        anim.SetFloat(this._velocity, agent.velocity.sqrMagnitude, 0.5f, Time.deltaTime);
+
+        if (this.target == null)
             return;
-        
-        this.stateHandler.setState(EnemyStates.follow);
+
+        stateHandler.setState(EnemyStates.follow);
     }
 }

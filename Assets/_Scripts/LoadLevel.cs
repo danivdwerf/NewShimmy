@@ -3,8 +3,8 @@ using System;
 
 public class LoadLevel : MonoBehaviour 
 {
-    [SerializeField]private GameObject lobby;
-    [SerializeField]private GameObject level;
+    [SerializeField]private GameObject lobby = null;
+    [SerializeField]private GameObject level = null;
 
     private NetworkManager manager;
 

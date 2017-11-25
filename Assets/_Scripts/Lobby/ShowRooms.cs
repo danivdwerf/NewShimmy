@@ -7,8 +7,8 @@ public class ShowRooms : MonoBehaviour
 {
     private LoadRooms loadRooms;
 
-    [SerializeField]private GameObject parent;
-    [SerializeField]private Font buttonFont;
+    [SerializeField]private GameObject parent = null;
+    [SerializeField]private Font buttonFont = null;
 
     private Button[] buttons;
     private Text[] buttonLabels;

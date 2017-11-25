@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class HealthUI : MonoBehaviour 
 {
-    [SerializeField]private Image healthBar;
+    [SerializeField]private Image healthBar = null;
     private NPCHealth health;
 
     private void Start()

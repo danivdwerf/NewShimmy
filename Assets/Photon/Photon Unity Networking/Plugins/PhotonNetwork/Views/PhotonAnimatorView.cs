@@ -93,8 +93,8 @@ public class PhotonAnimatorView : MonoBehaviour, IPunObservable
     [SerializeField]
     private List<SynchronizedLayer> m_SynchronizeLayers = new List<SynchronizedLayer>();
 
-    private Vector3 m_ReceiverPosition;
-    private float m_LastDeserializeTime;
+    //private Vector3 m_ReceiverPosition;
+    //private float m_LastDeserializeTime;
     private bool m_WasSynchronizeTypeChanged = true;
     private PhotonView m_PhotonView;
 

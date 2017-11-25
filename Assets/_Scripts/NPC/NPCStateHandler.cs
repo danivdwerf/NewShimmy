@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class NPCStateHandler : MonoBehaviour 
@@ -7,7 +6,7 @@ public class NPCStateHandler : MonoBehaviour
     private Dictionary<EnemyStates, NPCBehaviour> states;
     private NPCBehaviour currentBehaviour;
 
-    private void Start()
+    private void Awake()
     {
         this.states = new Dictionary<EnemyStates, NPCBehaviour>();
         this.currentBehaviour = null;
@@ -20,21 +19,21 @@ public class NPCStateHandler : MonoBehaviour
 
         if (this.currentBehaviour != null)
             this.currentBehaviour.leave();
-
+        
         this.currentBehaviour = this.states[state];
-        states[state].enter();
+        this.currentBehaviour.enter();
     }
 
     public void addState(EnemyStates id, NPCBehaviour command)
     {
-        states.Add(id, command);
+        this.states.Add(id, command);
     }
 
     private void Update()
     {
         if (this.currentBehaviour == null)
             return;
-
+        
         this.currentBehaviour.update();
     }
 }
