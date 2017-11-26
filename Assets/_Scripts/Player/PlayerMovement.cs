@@ -5,6 +5,7 @@ public class PlayerMovement : Photon.MonoBehaviour
 {
     [SerializeField] private float speed = 4.0f;
     [SerializeField] private float runSpeed = 2.0f;
+    [SerializeField] private float rotationSpeed = 1.0f;
     private float runScaler;
 
     private Animator anim;
@@ -59,7 +60,7 @@ public class PlayerMovement : Photon.MonoBehaviour
         velocity.y = 0.0f;
            
         if(velocity != Vector3.zero)
-            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(velocity), 0.1f);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(velocity), this.rotationSpeed);
 
         rigid.MovePosition(rigid.position + velocity);
         anim.SetFloat(_velocityAnim, velocity.sqrMagnitude);

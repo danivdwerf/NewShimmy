@@ -4,9 +4,16 @@ using UnityEngine.AI;
 public class NPCAttackState : NPCBehaviour 
 {
     [SerializeField]private float followDistance = 10.0f;
-    private bool isAttacking;
+    [SerializeField]private bool isAttacking;
     private bool ableToDoDamage;
     private int _attack;
+
+    private NPCHealth health;
+
+    protected void Start()
+    {
+        this.health = this.GetComponent<NPCHealth>();
+    }
 
     public override void enter()
     {
@@ -22,7 +29,18 @@ public class NPCAttackState : NPCBehaviour
             return;
 
         if (target == null)
+        {
             stateHandler.setState(EnemyStates.idle);
+            return;
+        }
+        
+        if (health.IsTakingDamage == true)
+        {
+            //print("i am taking damage");
+            anim.SetBool(this._attack, false);
+            this.isAttacking = false;
+            return;
+        }
 
         if (this.isAttacking)
             return;
@@ -54,8 +72,8 @@ public class NPCAttackState : NPCBehaviour
 
     public void OnAttackFinish()
     {
-        this.isAttacking = false;
         anim.SetBool(this._attack, false);
+        this.isAttacking = false;
     }
 
     private void OnTriggerStay(Collider other)

@@ -12,16 +12,18 @@ public class NPCHealth : MonoBehaviour
     private int currentHealth;
     public int CurrentHealth{get{return this.currentHealth;}}
 
+    public bool isTakingDamage;
+    public bool IsTakingDamage{get{return this.isTakingDamage;}}
+
     private Animator anim;
     private PhotonView photonView;
-    //private NPCBehaviour ai;
 
     private void Start()
     {
         this.currentHealth = this.maxHealth;
+        this.isTakingDamage = false;
         this.photonView = PhotonView.Get(this.gameObject);
         this.anim = this.GetComponent<Animator>();
-        //this.ai = this.GetComponent<NPCBehaviour>();
     }
 
     public void OnWeaponEnter()
@@ -33,8 +35,8 @@ public class NPCHealth : MonoBehaviour
     private void takeDamage()
     {
         currentHealth -= 20;
-        //ai.OnAttackFinish();
-        anim.SetTrigger("damage");
+        anim.SetBool("damage", true);
+        this.isTakingDamage = true;
 
         if (this.OnTakeDamage != null)
         {
@@ -42,6 +44,12 @@ public class NPCHealth : MonoBehaviour
             this.OnTakeDamage(healthRatio);
         }
         this.checkDeath();
+    }
+
+    public void onDamageEnd()
+    {
+        anim.SetBool("damage", false);
+        this.isTakingDamage = false;
     }
 
     private void checkDeath()
