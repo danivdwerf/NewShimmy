@@ -76,16 +76,14 @@ public class NPCAttackState : NPCBehaviour
         this.isAttacking = false;
     }
 
-    private void OnTriggerStay(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
+        base.OnTriggerEnter(other);
         if (!this.ableToDoDamage)
             return;
-
-        if (other.tag != Tags.Player)
-            return;
         
-        //other.gameObject.SendMessage("OnWeaponEnter", SendMessageOptions.DontRequireReceiver);
-        //this.ableToDoDamage = false;
+        other.gameObject.SendMessage("OnWeaponEnter", SendMessageOptions.DontRequireReceiver);
+        this.ableToDoDamage = false;
     }
 
     public override void leave()

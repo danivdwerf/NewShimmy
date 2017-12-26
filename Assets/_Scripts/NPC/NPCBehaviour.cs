@@ -9,10 +9,12 @@ public abstract class NPCBehaviour : MonoBehaviour
     protected Transform target;
     protected Animator anim;
     protected bool dead;
+    protected HealthUI healthUI;
 
     public virtual void Awake()
     {
         this.stateHandler = this.GetComponent<NPCStateHandler>();
+        this.healthUI = this.GetComponent<HealthUI>();
         this.agent = this.GetComponent<NavMeshAgent>();
         agent.autoBraking = false;
         this.target = null;
@@ -35,6 +37,9 @@ public abstract class NPCBehaviour : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
+        if (this.dead)
+            return;
+        
         if (this.target != null)
             return;
 
@@ -44,6 +49,7 @@ public abstract class NPCBehaviour : MonoBehaviour
         if (other.isTrigger)
             return;
 
+        healthUI.showUI(true);
         this.target = other.transform;
     }
 
@@ -55,6 +61,7 @@ public abstract class NPCBehaviour : MonoBehaviour
         if (other.isTrigger)
             return;
 
+        healthUI.showUI(false);
         this.target = null;
     }
 
