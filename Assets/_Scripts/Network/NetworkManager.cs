@@ -30,6 +30,7 @@ public class NetworkManager : Photon.PunBehaviour
         this.load(true);
         PhotonNetwork.autoJoinLobby = this.autoJoinLobby;
         PhotonNetwork.offlineMode = this.offline;
+
         this.networkPositions= GameObject.FindObjectsOfType<NetworkPosition>();
 
         if (this.dontDestroyOnLoad)
@@ -40,8 +41,10 @@ public class NetworkManager : Photon.PunBehaviour
         
     private void connect()
     {
-        if (!this.offline)
-            PhotonNetwork.ConnectUsingSettings(NetworkValues.VERSION);
+        if (this.offline)
+            return;
+
+        PhotonNetwork.ConnectUsingSettings(NetworkValues.VERSION);
     }
 
     public override void OnJoinedLobby()
@@ -56,7 +59,7 @@ public class NetworkManager : Photon.PunBehaviour
         
         this.load(true);
         RoomOptions options = new RoomOptions();
-        options.MaxPlayers = (byte)NetworkValues.MAX_PLAYERS;
+        options.MaxPlayers = NetworkValues.MAX_PLAYERS;
         PhotonNetwork.CreateRoom(roomName, options, null);
     }
 
@@ -110,8 +113,10 @@ public class NetworkManager : Photon.PunBehaviour
 
     private void load(bool value)
     {
-        if (OnLoad != null)
-            OnLoad(value);
+        if (OnLoad == null)
+            return;
+
+        OnLoad(value);
     }
 
     private void showMessage(string message)

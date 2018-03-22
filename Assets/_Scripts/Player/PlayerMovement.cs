@@ -22,7 +22,7 @@ public class PlayerMovement : Photon.MonoBehaviour
     {
         this.movement = Vector3.zero;
         this.currentSpeedMultiplier = 0.0f;
-       
+
         this.anim = this.GetComponent<Animator>();
         this._velocityAnim = Animator.StringToHash("velocity");
         this.mainCam = this.GetComponent<PlayerCam>().PlayerCamera;
@@ -56,16 +56,16 @@ public class PlayerMovement : Photon.MonoBehaviour
     {
         if (!photonView.isMine)
             return;
-        
+
         if (this.mainCam == null)
             return;
-        
+
         var movementDirection = mainCam.transform.TransformDirection(movement);
         var leftCross = Vector3.Cross(movementDirection, Vector3.up);
         var forwardCross = Vector3.Cross(Vector3.up, leftCross);
         Vector3 velocity = forwardCross.normalized * this.currentSpeedMultiplier * Time.fixedDeltaTime;
         velocity.y = 0.0f;
-           
+
         if(velocity != Vector3.zero)
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(velocity), this.rotationSpeed);
 
@@ -73,3 +73,5 @@ public class PlayerMovement : Photon.MonoBehaviour
         anim.SetFloat(_velocityAnim, velocity.sqrMagnitude);
     }
 }
+
+// scriptableobjects unite austin | unite 2016
